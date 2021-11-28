@@ -106,11 +106,13 @@ public class Lgucdb01 {
         }
     }
 
-    @Transactional // Set isolation if required
+    // @Transactional // Set isolation if required
     public void updateCustomerInfo() {
-        log.debug("MethodupdateCustomerInfostarted..");
+        log.debug("MethodupdateCustomerInfostarted.." + dfhcommarea.getCaCustomerRequest().getCaDob() + " "
+                + db2CustomernumInt);
         emVariable.setEmSqlreq(" UPDATE CUST");
         try {
+
             updateCustomerJpa.updateCustomerByCaFirstNameAndCaLastNameAndCaDob(
                     dfhcommarea.getCaCustomerRequest().getCaFirstName(),
                     dfhcommarea.getCaCustomerRequest().getCaLastName(), dfhcommarea.getCaCustomerRequest().getCaDob(),
@@ -131,7 +133,7 @@ public class Lgucdb01 {
     public void writeErrorMessage() {
         log.debug("MethodwriteErrorMessagestarted..");
         wsAbstime = LocalTime.now().toString();
-        wsAbstime = LocalTime.now().toString();
+
         wsDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MMDDYYYY"));
         wsTime = LocalTime.now().toString();
         errorMsg.setEmDate(wsDate.substring(0, 8));
