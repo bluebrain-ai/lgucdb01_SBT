@@ -124,6 +124,8 @@ public class Lgucdb01 {
 
         } catch (Exception e) {
             log.error(e);
+            dfhcommarea.setCaReturnCode(90);
+            throw new RuntimeException("update Error in customer");
         }
 
         log.debug("Method updateCustomerInfo completed..");
